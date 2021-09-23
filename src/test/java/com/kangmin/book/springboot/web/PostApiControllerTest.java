@@ -1,6 +1,5 @@
 package com.kangmin.book.springboot.web;
 
-
 import com.kangmin.book.springboot.domain.posts.Posts;
 import com.kangmin.book.springboot.domain.posts.PostsRepository;
 import com.kangmin.book.springboot.web.dto.PostsSaveRequestDto;
