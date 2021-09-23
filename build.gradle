@@ -21,12 +21,11 @@ sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
+    jcenter()
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    compile('org.springframework.boot:spring-boot-starter-com.kangmin.book.springboot.web')
+    compile('org.springframework.boot:spring-boot-starter-web')
     compile('org.projectlombok:lombok')// Useful library, automatically create getter,setter,toString ..etc
     compile('org.springframework.boot:spring-boot-starter-data-jpa')
     compile('com.h2database:h2')
