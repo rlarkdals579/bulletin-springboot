@@ -7,10 +7,17 @@ var main = {
         $('#btn-save').on('click', function () {
             _this.save();
         });
+
         // When a click event occurs in an html element with an id called btn-update,
         // register the event to execute the update function.
         $('#btn-update').on('click', function () {
             _this.update();
+        });
+
+        // When a click event occurs in an html element with an id called btn-delete,
+        // register the event to execute the delete function.
+        $('#btn-delete').on('click', function () {
+            _this.delete();
         });
     },
 
@@ -29,7 +36,7 @@ var main = {
             data: JSON.stringify(data)
         }).done(function () {
             alert('Successfully Posted');
-            window.location.href = '/'; // if successfully posted, go back to the main page(/)
+            window.location.href = '/'; // if successfully posted, go back to the main page(/) - Root dir
         }).fail(function (error) {
             alert(JSON.stringify(error));
         });
@@ -52,11 +59,30 @@ var main = {
             data: JSON.stringify(data)
         }).done(function () {
             alert('Successfully Edited');
-            window.location.href = '/';
+            window.location.href = '/'; // if successfully edited, go back to the main page(/) - Root dir
         }).fail(function (error) {
             alert(JSON.stringify(error));
         });
     },
+
+    // delete function triggered by 'DELETE' button
+    delete : function () {
+        var id = $('#id').val();
+
+        $.ajax({
+            type: 'DELETE',
+            url: '/api/v1/posts/'+id,
+            dataType: 'json',
+            contentType:'application/json; charset=utf-8'
+        }).done(function() {
+            alert('Successfully deleted.');
+            window.location.href = '/'; // if successfully deleted, go back to the main page(/) - Root dir
+        }).fail(function (error) {
+            alert(JSON.stringify(error));
+        });
+    }
+
+
 };
 
 main.init();

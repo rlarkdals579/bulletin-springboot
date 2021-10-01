@@ -35,6 +35,15 @@ public class PostsService {
 
     }
 
+    @Transactional
+    public void delete (Long id){
+        Posts posts = postsRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("This post does not exist id=" + id));
+
+        postsRepository.delete(posts);
+        // or postRepository.deleteById(id); would work as well
+    }
+
     public PostsResponseDto findById(Long id) {
         Posts entity = postsRepository.findById(id)
                 .orElseThrow(() -> new
