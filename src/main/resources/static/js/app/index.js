@@ -28,7 +28,7 @@ var main = {
             contentType: 'application/json; charset=utf-8',
             data: JSON.stringify(data)
         }).done(function () {
-            alert('Successfully Posted.');
+            alert('Successfully Posted');
             window.location.href = '/'; // if successfully posted, go back to the main page(/)
         }).fail(function (error) {
             alert(JSON.stringify(error));
@@ -51,7 +51,7 @@ var main = {
             contentType: 'application/json; charset=utf-8',
             data: JSON.stringify(data)
         }).done(function () {
-            alert('Successfully Edited.');
+            alert('Successfully Edited');
             window.location.href = '/';
         }).fail(function (error) {
             alert(JSON.stringify(error));
