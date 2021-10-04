@@ -1,9 +1,0 @@
-{
-  "properties": [
-    {
-      "name": "dialect.",
-      "type": "java.lang.String",
-      "description": "Description for dialect.."
-  }
-]
-}
