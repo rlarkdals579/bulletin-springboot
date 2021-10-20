@@ -14,6 +14,22 @@ cache:
 
 script: "./gradlew clean build"
 
+before_deploy:
+  -zip -r kangmin-springboot2-webservice *
+  -mkdir -p deploy
+  -mv kangmin-springboot2-webservice.zip deploy/kangmin-springboot2-webservice.zip
+
+deploy:
+  - provider: s3
+    access_key_id: $AWS_ACCESS_KEY # Value from Travis repo settings
+    secret_access_key: $AWS_SECRET_KEY # Value from Travis repo settings
+    bucket: freelec-springboot-build # S3 bucket
+    region: ap-northeast-2
+    skip_cleanup: true
+    acl: private # set access to zip file as a private
+    local_dir: deploy # directory <- before_deploy
+    wait-until-deployed: true
+
 # Email alert when CI successfully executed
 notifications:
   email:
