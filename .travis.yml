@@ -14,26 +14,17 @@ cache:
 
 script: "./gradlew clean build"
 
-#before_deploy:
-#  - zip -r springboot-webservice *
-#  - mkdir -p deploy
-#  - mv springboot-webservice.zip deploy/springboot-webservice.zip
-
 before_deploy:
-  - mkdir -p before-deploy
-    - cp scripts/*.sh before-deploy/
-    - cp appspec.yml before-deploy/
-    - cp build/libs/*.jar before-deploy/
-    - cd before-deploy && zip -r before-deploy *
-    - cd ../ && mkdir -p deploy
-    - mv before-deploy/before-deploy.zip deploy/springboot-webservice.zip
+  - zip -r springboot-webservice
+  - mkdir -p deploy
+  - mv springboot-webservice.zip deploy/springboot-webservice.zip
 
 deploy:
   - provider: s3
     access_key_id: $AWS_ACCESS_KEY # Value from Travis repo settings
     secret_access_key: $AWS_SECRET_KEY # Value from Travis repo settings
     bucket: freelec-springboot-build # S3 bucket
-    region: ap-northeast-2
+    region: us-east-2
     skip_cleanup: true
     acl: private # set access to zip file as a private
     local_dir: deploy # directory <- before_deploy
