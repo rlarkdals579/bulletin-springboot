@@ -3,18 +3,18 @@
 REPOSITORY=/home/ec2-user/app/step2
 PROJECT_NAME=springboot-webservice
 
-echo "> Copy Build file"
+echo "> Copying build file"
 
 cp $REPOSITORY/zip/*.jar $REPOSITORY/
 
-echo "> Checking current application's PID"
+echo "> Checking current PID"
 
 CURRENT_PID=$(pgrep -fl springboot-webservice | grep jar | awk '{print $1}')
 
-echo "Current application PID ": $CURRENT_PID"
+echo "Current runninb application's pid: $CURRENT_PID"
 
 if [ -z "$CURRENT_PID" ]; then
-    echo "> There is no current running application. Exit denied"
+    echo "> There is not current application. Exit denied"
 else
     echo "> kill -15 $CURRENT_PID"
     kill -15 $CURRENT_PID
@@ -27,7 +27,7 @@ JAR_NAME=$(ls -tr $REPOSITORY/*.jar | tail -n 1)
 
 echo "> JAR Name: $JAR_NAME"
 
-echo "> $JAR_NAME : permit access"
+echo "> $JAR_NAME add access"
 
 chmod +x $JAR_NAME
 
