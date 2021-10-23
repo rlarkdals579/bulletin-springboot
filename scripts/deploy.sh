@@ -9,9 +9,9 @@ cp $REPOSITORY/zip/*.jar $REPOSITORY/
 
 echo "> Checking current PID"
 
-CURRENT_PID=$(pgrep -fl springboot-webservice | grep jar | awk '{print $1}')
+CURRENT_PID=$(pgrep -fl springboot-webservice | grep java | awk '{print $1}')
 
-echo "Current runninb application's pid: $CURRENT_PID"
+echo "Current running application's pid: $CURRENT_PID"
 
 if [ -z "$CURRENT_PID" ]; then
     echo "> There is not current application. Exit denied"
