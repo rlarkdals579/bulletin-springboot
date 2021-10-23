@@ -1,7 +1,7 @@
 #!/bin/bash
 
 REPOSITORY=/home/ec2-user/app/step2
-PROJECT_NAME=freelec-springboot2-webservice
+PROJECT_NAME=springboot-webservice
 
 echo "> Copy Build file"
 
@@ -9,7 +9,7 @@ cp $REPOSITORY/zip/*.jar $REPOSITORY/
 
 echo "> Checking current application's PID"
 
-CURRENT_PID=$(pgrep -fl freelec-springboot2-webservice | grep jar | awk '{print $1}')
+CURRENT_PID=$(pgrep -fl springboot-webservice | grep jar | awk '{print $1}')
 
 echo "Current application PID ": $CURRENT_PID"
 
